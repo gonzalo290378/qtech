@@ -39,16 +39,16 @@ public class NodeServiceImpl implements NodeService {
         nodeRepository.delete(node);
     }
 
-//    public NodeResponseDTO moveNode(String nodeId, String newParentId) {
-//        Node node = nodeRepository.findByNodeId(nodeId)
-//                .orElseThrow(() -> new EntityNotFoundException("Node not found"));
-//        Node newParent = nodeRepository.findById(newParentId)
-//                .orElseThrow(() -> new EntityNotFoundException("New parent not found"));
-//
-//        node.setParentNode(newParent);
-//        Node updated = nodeRepository.save(node);
-//        return nodeMapper.toDTO(updated);
-//    }
+    public NodeResponseDTO moveNode(String nodeName, String newParentName) {
+        Node node = nodeRepository.findByName(nodeName)
+                .orElseThrow(() -> new EntityNotFoundException("Node not found"));
+        Node newParent = nodeRepository.findByName(newParentName)
+                .orElseThrow(() -> new EntityNotFoundException("New parent not found"));
+
+        node.setParentId(newParent);
+        Node updated = nodeRepository.save(node);
+        return nodeMapper.toDTO(updated);
+    }
 
 
     public List<String> getChildren(String parentName) {

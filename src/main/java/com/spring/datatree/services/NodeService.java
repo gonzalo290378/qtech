@@ -11,7 +11,7 @@ public interface NodeService {
 
     void deleteNode(String nodeId);
 
-    //NodeResponseDTO moveNode(String nodeId, String newParentId);
+    NodeResponseDTO moveNode(String nodeName, String newParentName);
 
     List<String> getChildren(String parentId);
 

@@ -31,12 +31,12 @@ public class NodeController {
         return ResponseEntity.noContent().build();
     }
 
-//    @PutMapping("/{nodeId}/move/{newParentId}")
-//    public ResponseEntity<NodeResponseDTO> moveNode(
-//            @PathVariable String nodeId,
-//            @PathVariable String newParentId) {
-//        return ResponseEntity.ok(nodeService.moveNode(nodeId, newParentId));
-//    }
+    @PutMapping("/{nodeName}/move/{newParentName}")
+    public ResponseEntity<NodeResponseDTO> moveNode(
+            @PathVariable String nodeName,
+            @PathVariable String newParentName) {
+        return ResponseEntity.ok(nodeService.moveNode(nodeName, newParentName));
+    }
 
     @GetMapping()
     public ResponseEntity<List<String>> getChildrenNodes(@RequestParam String parentId) {
