@@ -3,6 +3,7 @@ package com.spring.datatree.controller;
 import com.spring.datatree.dto.NodeRequestDTO;
 import com.spring.datatree.dto.NodeResponseDTO;
 import com.spring.datatree.services.NodeService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ public class NodeController {
 
     @PostMapping()
     public ResponseEntity<NodeResponseDTO> addChild(
-            @RequestBody NodeRequestDTO dto) {
+            @RequestBody @Valid NodeRequestDTO dto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(nodeService.addChild(dto));
     }
 
